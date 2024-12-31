@@ -1,101 +1,108 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { CheckCircle2 } from 'lucide-react'
+import { ThemeToggle } from '@/components/theme-toggle'
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex justify-end mb-4">
+          <ThemeToggle />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold tracking-tight text-primary mb-4">Welcome to IP - Inventory Prototype</h1>
+          <p className="text-xl text-muted-foreground">A modern, efficient, and user-friendly inventory management system</p>
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-12">
+          <Card>
+            <CardHeader>
+              <CardTitle>Key Features</CardTitle>
+              <CardDescription>Core functionalities of our system</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {[
+                  'Real-time inventory tracking',
+                  'Stock movement management',
+                  'Supplier management',
+                  'Role-based access control',
+                  'Barcode scanning support',
+                  'Dark/Light theme support'
+                ].map((feature) => (
+                  <li key={feature} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-primary" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>User Roles</CardTitle>
+              <CardDescription>Access levels and permissions</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-1">Admin</h3>
+                  <p className="text-sm text-muted-foreground">Full access to all features, user management, and system configuration</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Manager</h3>
+                  <p className="text-sm text-muted-foreground">Access to inventory management, reports, and supplier management</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Warehouse</h3>
+                  <p className="text-sm text-muted-foreground">Basic inventory operations, stock movements, and barcode scanning</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Demo Credentials</CardTitle>
+              <CardDescription>Test accounts for each role</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-semibold mb-1">Admin Access</h3>
+                  <p className="text-sm">Username: admin</p>
+                  <p className="text-sm text-muted-foreground">Password: admin123</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Manager Access</h3>
+                  <p className="text-sm">Username: manager</p>
+                  <p className="text-sm text-muted-foreground">Password: manager123</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-1">Warehouse Access</h3>
+                  <p className="text-sm">Username: warehouse</p>
+                  <p className="text-sm text-muted-foreground">Password: warehouse123</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="flex justify-center gap-4">
+          <Button asChild size="lg">
+            <Link href="/login">Login</Link>
+          </Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/register">Register</Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/documentation">View Documentation</Link>
+          </Button>
+        </div>
+      </div>
     </div>
-  );
+  )
 }
